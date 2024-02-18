@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
 
-const WorkoutSchema = new mongoose.Schema({
+const ExerciseSchema = new mongoose.Schema({
     creator: String,
-    type: {
+    name: {
         type: String,
       },
       duration: {
@@ -24,7 +24,8 @@ const WorkoutSchema = new mongoose.Schema({
       date: {
         type: Date,
         default: Date.now
-      }
+      },
+
   }, {timestamps: true})
 
-export default mongoose?.models?.Workout || mongoose.model("Workout", WorkoutSchema)
+export default mongoose?.models?.Exercise || mongoose.model("Exercise", ExerciseSchema)
