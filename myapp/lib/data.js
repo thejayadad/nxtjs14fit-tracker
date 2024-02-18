@@ -1,6 +1,7 @@
 'use server'
 import Category from "@/models/Category"
 import connectDB from "./db"
+import Workout from "@/models/Workout"
 
 export const getAllCategory = async () => {
     try {
@@ -22,4 +23,17 @@ try {
     throw new Error("Failed to fetch categories! " + error);
 }
 
+}
+
+export const getWorkouts = async (categoryId) => {
+    try {
+        await connectDB()
+        const workouts = await Workout.find( { categoryId: categoryId})
+  
+        console.log("Workouts: ", workouts);  
+        return workouts;
+    } catch (error) {
+        throw new Error("Failed to fetch workouts! " + error);
+        
+    }
 }

@@ -14,18 +14,17 @@ const EditCategoryPage = ({ params }) => {
   const fetchCategory = async () => {
     try {
       const category = await getSingleCategory(id);
-      setValue('title', category.title); // Set the initial value of the title input field
+      setValue('title', category.title); 
     } catch (error) {
       console.error('Error fetching category:', error);
     }
   };
 
-  // Submit form data
   const onSubmit = async (formData) => {
     try {
-      await updateCategory(id, formData.title); // Pass ID and title separately to updateCategory
-      setSuccessMessage('Category updated successfully'); // Set success message
-      router.push('/dashboard'); // Redirect user to /dashboard
+      await updateCategory(id, formData.title); 
+      setSuccessMessage('Category updated successfully'); 
+      router.push('/dashboard'); 
     } catch (error) {
       console.error('Error updating category:', error);
     }

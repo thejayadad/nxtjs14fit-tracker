@@ -1,13 +1,27 @@
 import { updateCategory } from '@/lib/action';
-import { getSingleCategory } from '@/lib/data';
+import { getSingleCategory, getWorkouts } from '@/lib/data';
 import React from 'react'
 
 const UpdateCategory = async ({ params }) => {
     const { id } = params;
     const category = await getSingleCategory(id)
+    const workouts = await getWorkouts()
   return (
     <div className='flex flex-col gap-4'>
-        <h2 className='text-center'>{category.title}</h2>
+              {category && <h2 className='text-center'>{category.title}</h2>}
+            {workouts.length > 0 ? (
+                <div>
+                    {/* Render information about workouts */}
+                    {workouts.map((workout) => (
+                        <div key={workout.id}>
+                            <p>{workout.name}</p>
+                        </div>
+                    ))}
+                </div>
+            ) : (
+                <p className='text-center'>No workouts available. Post your first workout!</p>
+            )}
+
     </div>
   )
 }
