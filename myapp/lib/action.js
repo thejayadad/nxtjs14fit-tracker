@@ -15,8 +15,8 @@ export const addExercise = async(name) => {
       name,
     });
     await newExercise.save();
-    return newExercise; 
-  } catch (error) {
+    return newExercise.toJSON(); 
+    } catch (error) {
     throw new Error("Failed to create exercise! " + error);
   }
 }
