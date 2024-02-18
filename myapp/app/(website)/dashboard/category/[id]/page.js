@@ -1,3 +1,4 @@
+import Modals from '@/components/Modal';
 import { updateCategory } from '@/lib/action';
 import { getSingleCategory, getWorkouts } from '@/lib/data';
 import React from 'react'
@@ -11,7 +12,6 @@ const UpdateCategory = async ({ params }) => {
               {category && <h2 className='text-center'>{category.title}</h2>}
             {workouts.length > 0 ? (
                 <div>
-                    {/* Render information about workouts */}
                     {workouts.map((workout) => (
                         <div key={workout.id}>
                             <p>{workout.name}</p>
@@ -19,7 +19,10 @@ const UpdateCategory = async ({ params }) => {
                     ))}
                 </div>
             ) : (
+           <>
                 <p className='text-center'>No workouts available. Post your first workout!</p>
+                <Modals/>
+           </>
             )}
 
     </div>
